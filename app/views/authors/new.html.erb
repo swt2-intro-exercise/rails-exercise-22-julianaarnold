@@ -1,2 +1,19 @@
 <h1>New author</h1>
 
+<%= form_with scope: :author, local: true do |form| %>
+    <p>
+        <%= form.label :first_name %><br>
+        <%= form.text_field :first_name %>
+    </p>
+
+    <p>
+        <%= form.label :last_name %><br>
+        <%= form.text_field :last_name %>
+    </p>
+
+    <p>
+        <%= form.label :homepage %><br>
+        <%= form.text_field :homepage %>
+    </p>
+    
+<% end %>
