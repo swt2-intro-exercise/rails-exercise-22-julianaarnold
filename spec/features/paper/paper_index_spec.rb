@@ -14,4 +14,11 @@ describe "Index page for papers", type: :feature do
         visit papers_path
         expect(page).to have_link 'Edit', href: edit_paper_path(@paper)
     end
+    
+    it "should contain a link to destroy paper" do
+        @paper = FactoryBot.create :paper
+        @paper.save
+        visit papers_path
+        expect(page).to have_link 'Delete', href: paper_path(@paper)
+    end
 end
