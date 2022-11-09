@@ -15,7 +15,7 @@ describe "Index page for authors", type: :feature do
             expect(page).to have_text 'Homepage'
         end
     end
-    it "should contain a link to new author page" do
+    it "should contain a link to edit author page" do
         @alan = FactoryBot.create :author
         @alan.save
         visit authors_path
