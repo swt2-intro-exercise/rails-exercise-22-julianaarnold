@@ -1,6 +1,47 @@
 <h1>Editing paper</h1>
 
-<%= render "form", paper: @paper %>
+<%= form_with(model: @paper, local: true) do |form| %>
+ 
+  <% if @paper.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@paper.errors.count, "error") %> prohibited
+        this author from being saved:
+      </h2>
+      <ul>
+        <% @paper.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_area :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :venue %><br>
+    <%= form.text_area :venue %>
+  </p>
+
+  <p>
+    <%= form.label :year %><br>
+    <%= form.text_area :year %>
+  </p>
+
+  <p>
+    <%= form.select 'author_ids',
+    options_from_collection_for_select(Author.all, :id, :name, @paper.author_ids),
+    {}, multiple: true, size: 10 %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
 
 <br>
 
